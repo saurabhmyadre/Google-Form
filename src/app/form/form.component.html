@@ -1,0 +1,294 @@
+<h1>Google Form</h1>
+<br>
+<form #form="ngForm" class="container">
+    <!-- {{form.value|json}} -->
+
+    <!-- Name Field -->
+    <div class="form-container">
+        <label for="name">Full Name (First Name & Last Name) <span>*</span></label>
+        <input type="text" name="name" class="form-control" [(ngModel)]="addData.name" #name="ngModel"
+            pattern="^[a-zA-Z ]*$" required minlength="3" placeholder="Your answer" />
+
+        <div class=" alert alert-danger" *ngIf="name.touched && name.invalid">
+            <div *ngIf="name.errors?.required">
+                ** This field is required
+            </div>
+
+            <div *ngIf="name.errors?.minlength">
+                ** Please enter minimum {{name.errors?.minlength.requiredLength}} chatacters
+            </div>
+
+            <div *ngIf="name.errors?.pattern">
+                ** Please enter only alphabetic characters
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <!-- Contact Field -->
+    <div class="form-container">
+        <label>Primary Contact Number (10 Digit) <span>*</span></label>
+        <input type="text" name="contact" [(ngModel)]="addData.contact" #contact="ngModel" required
+            placeholder="Your answer" maxlength="10" pattern="^[0-9]{10}$">
+        <!-- pattern isliye diye taki voh sirf numerical value accept kr sake alphabetical nahi or aisa ham sirf number input box ke liye karenge-->
+        <div class="alert alert-danger" *ngIf="contact.touched && contact.invalid">
+            <div *ngIf="contact.errors?.required">
+                ** This field is required
+            </div>
+
+            <div *ngIf="contact.errors?.pattern">
+                ** Please enter a valid 10-digit number.
+            </div>
+        </div>
+    </div>
+    <br>
+    <!-- Contact 2 Field -->
+    <div class="form-container">
+        <label for="alternatecontact">Alternate Contact Number </label>
+        <input type="text" id="alternatecontact" name="alternatecontact" [(ngModel)]="addData.alternatecontact"
+            #alternatecontact="ngModel" placeholder="Your answer" pattern="^[0-9]{10}$" maxlength="10">
+        <!-- pattern isliye diye taki voh sirf numerical value accept kr sake alphabetical nahi or aisa ham sirf number input box ke liye karenge-->
+
+        <div class="alert alert-danger" *ngIf="alternatecontact.errors?.pattern">
+            ** Please enter a valid 10-digit number.
+        </div>
+
+    </div>
+    <br>
+    <!-- Email Field -->
+    <div class="form-container">
+        <label for="myemail">Primary Email id <span>*</span></label>
+        <input type="email" id="myemail" name="email" class="form-control" #email="ngModel" [(ngModel)]="addData.email"
+            required placeholder="Your answer" [pattern]="Email_Pattern" />
+
+        <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+            <div *ngIf="email.errors?.required">
+                ** This field is required
+            </div>
+
+
+            <div *ngIf="email.errors?.pattern">
+                ** Please enter the appropriate Email-id
+            </div>
+        </div>
+    </div>
+    <br>
+    <!-- Gender Field -->
+    <div class="form-container">
+        <label>Gender: <span>*</span></label>
+        <br>
+        <div class="radio-group">
+            <label for="male">Male</label>
+            <input type="radio" id="male" name="gender" #gender="ngModel" value="Male" [(ngModel)]="addData.gender"
+                required />
+            <label for="female">Female</label>
+            <input type="radio" id="female" name="gender" #gender="ngModel" value="Female" [(ngModel)]="addData.gender"
+                required />
+        </div>
+    </div>
+    <br>
+    <!-- City Field -->
+    <div class="form-container">
+        <label for="city">Your Current Location: (Mention city name only) <span>*</span></label>
+        <input type="text" id="city" name="city" class="form-control" [(ngModel)]="addData.city" #city="ngModel"
+            pattern="^[a-zA-Z ]*$" minlength="3" placeholder="Your answer" required>
+
+        <div class=" alert alert-danger" *ngIf="city.touched && city.invalid">
+            <div *ngIf="city.errors?.required">
+                ** This field is required
+            </div>
+
+            <div *ngIf="city.errors?.minlength">
+                ** Please enter minimum {{city.errors?.minlength.requiredLength}} chatacters
+            </div>
+
+            <div *ngIf="city.errors?.pattern">
+                ** Please enter only alphabetic characters
+            </div>
+        </div>
+    </div>
+    <br>
+    <!-- College name Field -->
+    <div class="form-container">
+        <label for="college">Graduation College Name: (Mention Full name of college) <span>*</span></label>
+        <input type="text" name="college" class="form-control" [(ngModel)]="addData.college" #college="ngModel"
+            pattern="^[a-zA-Z ]*$" placeholder="Your answer" required>
+
+        <div class="alert alert-danger" *ngIf="college.touched && college.invalid">
+            <div *ngIf="college.errors?.required">
+                ** This field is required
+            </div>
+
+            <div *ngIf="college.errors?.pattern">
+                ** Please enter only alphabetic characters
+            </div>
+        </div>
+    </div>
+    <br>
+    <!-- Percentage Field -->
+    <div class="form-container">
+        <label for="percentage">Total Aggregate Percentage of Graduation: (%) <span>*</span></label>
+        <input type="text" name="percentage" class="form-control" [(ngModel)]="addData.percentage" #percentage="ngModel"
+            pattern="^(100|[0-9]{1,2})(\.\d{1,2})?$" maxlength="5" placeholder="Your answer" required>
+
+        <div class="alert alert-danger" *ngIf="percentage.touched && percentage.invalid">
+            <div *ngIf="percentage.errors?.required">
+                ** This field is required
+            </div>
+
+            <div *ngIf="percentage.errors?.pattern">
+                ** Please enter only numerical characters
+            </div>
+        </div>
+    </div>
+    <br>
+    <!-- Education gap Field -->
+    <div class="form-container">
+        <label>Is there any Education Gap: <span>*</span></label>
+        <br>
+        <div class="radio-group">
+            <label for="yes1">Yes</label>
+            <input type="radio" id="yes1" name="isEducationGap" #iseducationgap="ngModel" value="yes"
+                [(ngModel)]="addData.iseducationgap" required />
+            <label for="no1">No</label>
+            <input type="radio" id="no1" name="isEducationGap" #iseducationgap="ngModel"
+                [(ngModel)]="addData.iseducationgap" value="no" ngModel required />
+        </div>
+    </div>
+    <br>
+    <!-- Technology Field -->
+    <div class="form-container">
+        <label for="technology">In which technology you have exprience? (Fresher kindly mention NA)
+            <span>*</span></label>
+        <input type="text" name="technology" class="form-control" [(ngModel)]="addData.technology"
+            pattern="^[a-zA-Z ]*$" #technology="ngModel" placeholder="Your answer" required>
+
+        <div class="alert alert-danger" *ngIf="technology.touched && technology.invalid">
+            <div *ngIf="technology.errors?.required">
+                ** This field is required
+            </div>
+
+            <div *ngIf="technology.errors?.pattern">
+                ** Please enter only alphabetic characters
+            </div>
+        </div>
+    </div>
+    <br>
+    <!-- Company name Field -->
+    <div class="form-container">
+        <label for="company">Please Mention your last Company Name (Fresher kindly mention NA) <span>*</span></label>
+        <input type="text" name="company" class="form-control" [(ngModel)]="addData.company" #company="ngModel" required
+            pattern="^[a-zA-Zng ]*$" placeholder="Your answer" />
+
+        <div class="alert alert-danger" *ngIf="company.touched && company.invalid">
+            <div *ngIf="company.errors?.required">
+                ** This field is required
+            </div>
+
+            <div *ngIf="company.errors?.pattern">
+                ** Please enter only alphabetic characters
+            </div>
+        </div>
+    </div>
+    <br>
+    <!-- CTC Field -->
+    <div class="form-container">
+        <label for="ctc">Please mention your last CTC in Per Annum (Fresher kindly mention NA) <span>*</span></label>
+        <input type="text" name="ctc" class="form-control" [(ngModel)]="addData.ctc" #ctc="ngModel" required
+            placeholder="Your answer" />
+
+        <div class="alert alert-danger" *ngIf="ctc.touched && ctc.invalid">
+            <div *ngIf="ctc.errors?.required">
+                ** This field is required
+            </div>
+
+        </div>
+    </div>
+    <br>
+    <!-- State Field -->
+    <div class="form-container">
+        <label for="state">Please select the state you belongs to: <span>*</span></label>
+        <select class="form-control" [(ngModel)]="addData.state" required name="state" id="state" #state="ngModel">
+            <option value="" disabled selected hidden>Select an option</option>
+            <option *ngFor="let item of stateList" [ngValue]="item.sname">{{item.sname}}</option>
+            <!-- maine [ngValue]="item.sname" dala hai qki maine backend me state ka datatype string hai, agar mai 
+             idstate ki id ko bhi dalta toh muje backend me id naam ki propert bhi banani padti thi jo ki maine banaya nhi tha esiliye -->
+        </select>
+
+        <div class="alert alert-danger" *ngIf="state?.touched && state?.invalid">
+            ** This field is required
+        </div>
+    </div>
+    <br>
+    <!-- Project Field -->
+    <div class="form-container">
+        <label for="project">If you worked on live Project or Done any Internship Please Mention. <span>*</span></label>
+        <input type="text" [(ngModel)]="addData.project" #project="ngModel" name="project" id="project" required
+            pattern="^[a-zA-Z ]*$" placeholder="Your answer">
+
+        <div class="alert alert-danger" *ngIf="project.touched && project.invalid">
+            <div *ngIf="project.errors?.required">
+                ** This field is required
+            </div>
+
+            <div *ngIf="project.errors?.pattern">
+                ** Please enter only alphabetic characters
+            </div>
+        </div>
+    </div>
+    <br>
+    <!-- Institute Field -->
+    <div class="form-container">
+        <label for="institute">Institute Name(CODE/ID etc) <span>*</span></label>
+        <input type="text" [(ngModel)]="addData.institute" #institute="ngModel" name="institute" required
+            placeholder="Your answer">
+
+        <div class="alert alert-danger" *ngIf="institute.touched && institute.invalid">
+            ** This field is required
+        </div>
+    </div>
+    <br>
+    <!-- Shortlisted Field -->
+    <div class="form-container">
+        <label>If you are shortlisted, then will you be available for offline interview at Pune? <span>*</span></label>
+        <br>
+        <div class="radio-group">
+            <label for="yes2">Yes</label>
+            <input type="radio" id="yes2" name="isShortlisted" #isshortlisted="ngModel" value="yes"
+                [(ngModel)]="addData.isshortlisted" required />
+            <label for="no2">No</label>
+            <input type="radio" id="no2" name="isShortlisted" [(ngModel)]="addData.isshortlisted" value="no" ngModel
+                required />
+        </div>
+    </div>
+    <br>
+    <!-- Relocate Field -->
+    <div class="form-container">
+        <label>Are You Willing to Relocate to Pune? <span>*</span></label>
+        <br>
+        <div class="radio-group">
+            <label for="yes3">Yes</label>
+            <input type="radio" id="yes3" name="isRelocate" value="yes" #isrelocate="ngModel"
+                [(ngModel)]="addData.isrelocate" required />
+            <label for="no3">No</label>
+            <input type="radio" id="no3" name="isRelocate" value="no" #isrelocate="ngModel"
+                [(ngModel)]="addData.isrelocate" required />
+        </div>
+    </div>
+    <br>
+    <!-- Apply Field -->
+    <div class="form-container">
+        <label>I have read all the Job profile/Criteria/Terms & Conditions and ready to apply. <span>*</span></label>
+        <br>
+        <div class="radio-group">
+            <label for="yes">Yes</label>
+            <input type="radio" id="yes" name="isApply" value="yes" #isapply="ngModel" [(ngModel)]="addData.isapply"
+                required />
+            <label for="no">No</label>
+            <input type="radio" id="no" name="isApply" value="no" [(ngModel)]="addData.isapply" required />
+        </div>
+    </div>
+    <br>
+    <!-- Button Field -->
+    <button (click)="onSumbit()" [disabled]="form.invalid" class="btn btn-outline-success mb-2">Submit</button>
+</form>

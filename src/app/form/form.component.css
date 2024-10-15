@@ -1,0 +1,58 @@
+h1 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+.form-container {
+    height: 150px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #444;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin-top: 5%;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.radio-group {
+    display: flex;
+    gap: 15px;
+}
+
+span {
+    color: red;
+}
+
+.container {
+    height: 150px;
+    max-width: 600px;
+    user-select: none;
+}
+
+button {
+    cursor: pointer;
+}

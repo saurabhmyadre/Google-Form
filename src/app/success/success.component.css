@@ -1,0 +1,31 @@
+.form-container {
+    height: 400px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px;
+    margin-top: 8em;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.kanit-medium {
+    font-family: "Kanit", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    text-align: center;
+    margin-top: 2em;
+
+}
+
+.container {
+    height: 600px;
+    max-width: 600px;
+    user-select: none;
+}
+
+h3 {
+    color: blue;
+}
